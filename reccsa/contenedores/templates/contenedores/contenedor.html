@@ -1,0 +1,67 @@
+{% extends "contenedores/base.html" %}
+{% load static %}
+{% block title %}Contenedor{% endblock %}
+
+{% block content %}
+<div class="container mt-2">
+    
+    <div class="container mt-2">
+        <h2>Container Data</h2>
+        <div id="containerData"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Metadata</h4>
+            <table class="table table-bordered table-hover table-striped" id="metadata">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="col-md-4" style="padding: 0px;">
+                <h4>Current Location</h4>
+                <table class="table table-bordered table-hover table-striped" id="pin">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" onclick="navigateToRoute()">SHOW MAP</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Locations</h4>
+            <table class="table table-bordered table-hover table-striped" id="locations">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            
+            
+        </div>
+
+        <div class="col-md-4">
+            <h4>Facilities</h4>
+            <table class="table table-bordered table-hover table-striped" id="facilities">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>            
+        </div>
+
+
+    </div>
+    <div class="table-responsive">
+        <h4>Contenedores</h4>
+        <table class="table table-bordered table-hover table-striped" id="containers">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="{% static "js/script.js" %}"></script>
+{% endblock %}

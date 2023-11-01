@@ -1,0 +1,64 @@
+{% extends "contenedores/base.html" %} 
+{% load static %} 
+{% block title%}Buscador{% endblock %}
+
+{% block custom %}
+    <link rel="stylesheet" href="{%static "css/buscador.css" %}"> 
+{% endblock %} 
+
+{% block content %}
+<div id="buscador">
+  <div class="contenedor">
+    <div class="table_header">
+      <h2>Contenedores</h2>
+      <button>Crear Nuevo</button>
+      <select name="" id="estado">
+        <option value="" selected>Estado</option>
+        <option value="">Estado1</option>
+        <option value="">Estado2</option>
+      </select>
+      <div class="input-search">
+        <input type="text" placeholder="Buscar" />
+        <i class="bi bi-search" id="search"></i>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr class="bg-info">
+          <th class='text-center'>Número Contenedor <i class="bi bi-chevron-expand"></i></th>
+          <th class='text-center'>Número Factura <i class="bi bi-chevron-expand"></i></th>
+          <th class='text-center'>Estado <i class="bi bi-chevron-expand"></i></th>
+          <th class='text-center'>Ultima Actualización <i class="bi bi-chevron-expand"></i></th>
+          <th class='text-center'>Ver Detalles <i class="bi bi-chevron-expand"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class='text-center'>TCKU7385121</td>
+          <td class='text-center'>23442342342</td>
+          <td class='text-center'>IN_TRANSIT</td>
+          <td class='text-center'>2023-08-18 18:49:46</td>
+          <td class='text-center'><button class="detalles"><i class="bi bi-arrow-right-circle"></i></button></td>
+        </tr>
+        <tr>
+          <td class='text-center'>MRSU6208723</td>
+          <td class='text-center'>32523523523525</td>
+          <td class='text-center'>IN_TRANSIT</td>
+          <td class='text-center'>2023-08-18 18:49:53</td>
+          <td class='text-center'><button class="detalles"><i class="bi bi-arrow-right-circle"></i></button></i></td>
+        </tr>
+        <tr>
+          <td class='text-center'>MRSU46D0627</td>
+          <td class='text-center'>54234234234</td>
+          <td class='text-center'>IN_TRANSIT</td>
+          <td class='text-center'>2023-08-18 18:49:57</td>
+          <td class='text-center'><button class="detalles"><i class="bi bi-arrow-right-circle"></i></button></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table_footer mx-2">
+      <p class="mx-3">Total de filas : 03</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
