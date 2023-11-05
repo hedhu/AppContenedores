@@ -8,6 +8,8 @@ django = "*"
 pylint = "*"
 pylint-django = "*"
 pylint-celery = "*"
+celery = {extras = ["beat"], version = "*"}
+django-celery-beat = "*"
 
 [dev-packages]
 
