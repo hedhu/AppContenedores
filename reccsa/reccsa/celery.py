@@ -14,14 +14,6 @@ app = Celery('reccsa')
 #   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
-# Celery Beat
-app.conf.beat_schedule = {
-    "actualizar_BD" : {
-        "task" : "reccsa.tasks.sleepTest",
-        "schedule" : crontab(hour = 22, minute = 48),
-    }
-}
-
 # Load task modules from all registered Django apps.
 app.autodiscover_tasks()
 

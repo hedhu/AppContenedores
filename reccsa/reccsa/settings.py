@@ -83,6 +83,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'bd_sap': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'TST13_CONDENSA',
+        'USER': 'SA',
+        'PASSWORD': 'Sa123456',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -133,6 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # REDIS configuration
 
 CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 

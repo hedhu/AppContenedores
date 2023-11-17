@@ -10,6 +10,9 @@ pylint-django = "*"
 pylint-celery = "*"
 celery = {extras = ["beat"], version = "*"}
 django-celery-beat = "*"
+pyodbc = "*"
+requests = "*"
+mysqlclient = "*"
 
 [dev-packages]
 
