@@ -1,4 +1,3 @@
-// Cambiar la clase y el ancho de la imagen con id "logo"
 document.addEventListener("DOMContentLoaded", function() {
     const logoImage = document.getElementById("logo");
     const linkLogo = document.getElementById("linkLogo");

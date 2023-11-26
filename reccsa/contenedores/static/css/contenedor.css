@@ -1,0 +1,23 @@
+#logOut, #btnLogin {
+    background-color: #108dbe;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 14px;
+    border: none;
+}
+
+#logOut:hover, #btnLogin:hover {
+    background-color: #3ba1c9;
+}
+
+#showMap {
+    outline: none;
+    border: none;
+    background-color: #0f9fd6;
+    color: #ffffff;
+}
+
+#showMap:hover {
+    background-color: #108dbe;
+}

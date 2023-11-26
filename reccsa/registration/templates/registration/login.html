@@ -1,0 +1,30 @@
+{% extends "contenedores/base.html" %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block custom %}
+    <link rel="stylesheet" href="{%static "css/login.css" %}"> 
+    <script src="{% static "js/login.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div id="login">
+        <form id="formLogin" method="POST">
+            {% csrf_token %}
+            <h1>Bienvenido</h1>
+
+            <div class="inputContainer">
+                <input type="text" class="inputLogin" placeholder=" " name="username" required />
+                <label class="labelLogin">Usuario</label>
+            </div>
+
+            <div class="inputContainer">
+                <input type="password" class="inputLogin" placeholder=" " name="password" required />
+                <label class="labelLogin">Contraseña</label>
+            </div>
+
+            <input type="submit" class="submitButton" name="login" value="Ingresar" />
+        </form>
+    </div>
+{% endblock %}

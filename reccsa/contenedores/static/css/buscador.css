@@ -26,6 +26,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 15px 0px 15px;
+    margin-bottom: 10px;
 }
 
 .table_header button {
@@ -37,6 +38,19 @@
     border-radius: 20px;
     text-transform: uppercase;
     font-size: 14px;
+}
+
+#logOut, #btnLogin {
+    background-color: #108dbe;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 14px;
+    border: none;
+}
+
+#logOut:hover, #btnLogin:hover {
+    background-color: #3ba1c9;
 }
 
 .table_header button:hover {
@@ -97,3 +111,14 @@
     text-transform: uppercase;
     font-size: 14px;
 }
+
+@media (min-width: 992px) and (max-width: 1199px) { 
+    .table_header .input-search input {
+        width: 280px;
+    }
+
+    #buscador {
+        min-height: 90vh;
+    }
+}
+
