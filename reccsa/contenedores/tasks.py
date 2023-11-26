@@ -1,5 +1,6 @@
 from celery import shared_task
 from .models import FacturaSAP, Factura
+import django
 
 @shared_task
 def actualizarBaseDeDatos():
@@ -35,9 +36,11 @@ def actualizarBaseDeDatos():
     # facturas = cursor.fetchall()
 
     # conn.close()
-    
-    facturas = FacturaSAP.objects.filter(U_ESTADO_CONTENEDOR = "ABIERTO").using("bd_sap")
+
+    django.setup()
+
     try:
+        facturas = FacturaSAP.objects.filter(U_ESTADO_CONTENEDOR = "ABIERTO").using("bd_sap")
         for factura in facturas:
             nuevaFactura = Factura(
                 DocNum = factura.DocNum,
@@ -51,7 +54,7 @@ def actualizarBaseDeDatos():
             nuevaFactura.save()
     except Exception as e:
         print(f"Se produjo un error: {e}")
-    
+        raise
 
     # url = "https://tracking.searates.com/tracking"
 
@@ -84,5 +87,5 @@ def actualizarBaseDeDatos():
 
 @shared_task
 def sleepTest():
-    pass
+    return "FUNCIONA"
      

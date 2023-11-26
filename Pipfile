@@ -13,6 +13,8 @@ django-celery-beat = "*"
 pyodbc = "*"
 requests = "*"
 mysqlclient = "*"
+django-celery-results = "*"
+django-redis = "*"
 
 [dev-packages]
 
