@@ -2,6 +2,10 @@
 {% load static %}
 {% block title %}Contenedor{% endblock %}
 
+{% block custom %}
+    <link rel="stylesheet" href="{%static "css/contenedor.css" %}"> 
+{% endblock %}
+
 {% block content %}
 <div class="container mt-2">
     
@@ -26,7 +30,7 @@
                     <tbody>
                     </tbody>
                 </table>
-                <button class="btn btn-primary" onclick="navigateToRoute()">SHOW MAP</button>
+                <button id="showMap" class="btn btn-primary" onclick="navigateToRoute()">SHOW MAP</button>
             </div>
         </div>
         <div class="col-md-4">

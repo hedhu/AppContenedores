@@ -11,7 +11,7 @@
   <div class="contenedor">
     <div class="table_header">
       <h2>Contenedores</h2>
-      <button>Crear Nuevo</button>
+      <button id='nuevo' >Crear Nuevo</button>
       <select name="" id="estado">
         <option value="" selected>Estado</option>
         <option value="">Estado1</option>
@@ -29,7 +29,9 @@
           <th class='text-center'>Número Factura <i class="bi bi-chevron-expand"></i></th>
           <th class='text-center'>Estado <i class="bi bi-chevron-expand"></i></th>
           <th class='text-center'>Ultima Actualización <i class="bi bi-chevron-expand"></i></th>
-          <th class='text-center'>Ver Detalles <i class="bi bi-chevron-expand"></i></th>
+          {% if request.user.is_authenticated %}
+            <th class='text-center'>Ver Detalles <i class="bi bi-chevron-expand"></i></th>
+          {% endif %}
         </tr>
       </thead>
       <tbody>
@@ -38,27 +40,35 @@
           <td class='text-center'>23442342342</td>
           <td class='text-center'>IN_TRANSIT</td>
           <td class='text-center'>2023-08-18 18:49:46</td>
-          <td class='text-center'><button class="detalles"><i class="bi bi-arrow-right-circle"></i></button></td>
+          {% if request.user.is_authenticated %}
+            <td class='text-center'><a href="{% url "contenedor" %}" class="detalles"><i class="bi bi-arrow-right-circle"></i></a></td>
+          {% endif %}
         </tr>
         <tr>
           <td class='text-center'>MRSU6208723</td>
           <td class='text-center'>32523523523525</td>
           <td class='text-center'>IN_TRANSIT</td>
           <td class='text-center'>2023-08-18 18:49:53</td>
-          <td class='text-center'><button class="detalles"><i class="bi bi-arrow-right-circle"></i></button></i></td>
+          {% if request.user.is_authenticated %}
+            <td class='text-center'><a href="{% url "contenedor" %}" class="detalles"><i class="bi bi-arrow-right-circle"></i></a></td>
+          {% endif %}
         </tr>
         <tr>
           <td class='text-center'>MRSU46D0627</td>
           <td class='text-center'>54234234234</td>
           <td class='text-center'>IN_TRANSIT</td>
           <td class='text-center'>2023-08-18 18:49:57</td>
-          <td class='text-center'><button class="detalles"><i class="bi bi-arrow-right-circle"></i></button></i></td>
+          {% if request.user.is_authenticated %}
+            <td class='text-center'><a href="{% url "contenedor" %}" class="detalles"><i class="bi bi-arrow-right-circle"></i></a></td>
+          {% endif %}
         </tr>
       </tbody>
     </table>
-    <div class="table_footer mx-2">
-      <p class="mx-3">Total de filas : 03</p>
-    </div>
+    <!--
+      <div class="table_footer mx-2">
+        <p class="mx-3">Total de filas : 03</p>
+      </div>
+    -->
   </div>
 </div>
 {% endblock %}
