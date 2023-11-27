@@ -10,6 +10,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include(registration.urls)),
     path('buscador/', views.buscador, name='buscador'),
-    path('contenedor/', views.contenedor, name='contenedor'),
+    path('contenedor/<str:contenedor_codigo>/', views.contenedor, name='contenedor'),
 ]
 

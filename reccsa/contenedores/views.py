@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import FacturaSAP, Factura, Contenedor
 from .tasks import actualizarBaseDeDatos
@@ -35,6 +35,8 @@ def buscador(request):
 
         nuevoContenedor, creado = Contenedor.objects.get_or_create(codigo = idContenedor)
 
+        nuevoContenedor.naviera_nom = dataContenedor["data"]["metadata"]["sealine_name"]
+
         nuevoContenedor.estado = dataContenedor["data"]["containers"][0]["status"]
 
         nuevoContenedor.ultimo_evento_desc = aisDataContenedor["last_event"]["description"]
@@ -69,12 +71,11 @@ def buscador(request):
         facturaContenedor = Factura.objects.get(U_CONTAINER=nuevoContenedor.codigo)
         facturaContenedor.Contenedor = nuevoContenedor
         facturaContenedor.save()
+        
+        context = { 'contenedores' : Contenedor.objects.all() }
 
-    usuario = request.POST.get('username')
-    contraseña = request.POST.get('password')
-    print(usuario, contraseña)
-    return render(request, 'contenedores/buscador.html')
+    return render(request, 'contenedores/buscador.html', context)
 
-def contenedor(request):
-
-    return render(request, 'contenedores/contenedor.html')
+def contenedor(request, contenedor_codigo):
+    contenedor = get_object_or_404(Contenedor, codigo = contenedor_codigo)
+    return render(request, 'contenedores/contenedor.html', { 'contenedor': contenedor })
