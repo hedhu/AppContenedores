@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(Factura)
 admin.site.register(Contenedor)
+admin.site.register(Usuario)

@@ -15,6 +15,7 @@ requests = "*"
 mysqlclient = "*"
 django-celery-results = "*"
 django-redis = "*"
+pillow = "*"
 
 [dev-packages]
 

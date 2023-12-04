@@ -7,162 +7,162 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-2">
-    
-    <div class="container my-2 d-flex justify-content-between">
-        <h2>Container Data</h2>
-        <a href="{% url "buscador" %}" id="volver"><i class="bi bi-arrow-90deg-left"></i></a>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <h4>Metadata</h4>
-            <table class="table table-bordered table-hover table-striped w-100" id="metadata">
-                <thead>
-                </thead>
-                <tbody>
-                    <tr>
-                      <td>Numero Contenedor</td>
-                      <td>{{ contenedor.codigo }}</td>
-                    </tr>
-                    <tr>
-                        <td>Numero Factura</td>
-                        <td>{{ contenedor.factura.DocNum }}</td>
-                      </tr>
-                    <tr>
-                      <td>Nombre Naviera</td>
-                      <td>{{ contenedor.naviera_nom }}</td>
-                    </tr>
-                    <tr>
-                      <td>Estado</td>
-                      <td>{{ contenedor.estado }}</td>
-                    </tr>
-                    <tr>
-                      <td>Fecha Actualización</td>
-                      <td>{{ contenedor.ultima_actualizacion_tracking }}</td>
-                    </tr>
-                </tbody>
-            </table>
+{% if user.groups.all.0.name == 'Empleado' or user.groups.all.0.name == 'Administrador' %}
+    <div class="container mt-2">
+        
+        <div class="container my-2 d-flex justify-content-between">
+            <h2>Container Data</h2>
+            <a href="{% url "buscador" %}" id="volver"><i class="bi bi-arrow-90deg-left"></i></a>
         </div>
-        <div class="col-12">
-            <h4>Ultimo Evento</h4>
-            <table class="table table-bordered table-hover table-striped" id="eventos">
-                <thead>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Descripcion</td>
-                        <td>{{ contenedor.ultimo_evento_desc }}</td>
-                    </tr>
-                    <tr>
-                        <td>Fecha</td>
-                        <td>{{ contenedor.ultimo_evento_fecha }}</td>
-                    </tr>
-                </tbody>
-            </table> 
-        </div>
-        <div class="col-12">
-            <h4>Puertos</h4>
-            <table class="table table-bordered table-hover table-striped" id="puertos">
-                <thead>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Puerto Descarga ETA</td>
-                        <td>{{ contenedor.puerto_descarga_eta }}</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre Puerto Descarga</td>
-                        <td>{{ contenedor.puerto_descarga_nom }}</td>
-                    </tr>
-                    <tr>
-                        <td>Codigo País Puerto Descarga</td>
-                        <td>{{ contenedor.puerto_descarga_cod_pais }}</td>
-                    </tr>
-                    <tr>
-                        <td>Codigo Puerto Descarga</td>
-                        <td>{{ contenedor.puerto_descarga_cod }}</td>
-                    </tr>
-                    <tr>
-                        <td>Puerto Salida ATD</td>
-                        <td>{{ contenedor.puerto_salida_atd }}</td>
-                    </tr>
-                    <tr>
-                        <td>Codigo País Puerto Salida</td>
-                        <td>{{ contenedor.puerto_salida_cod_pais }}</td>
-                    </tr>
-                    <tr>
-                        <td>Codigo Puerto Salida</td>
-                        <td>{{ contenedor.puerto_salida_cod }}</td>
-                    </tr>
-                    <tr>
-                        <td>Puerto Llegada ETA</td>
-                        <td>{{ contenedor.puerto_llegada_eta }}</td>
-                    </tr>
-                    <tr>
-                        <td>Codigo País Puerto Llegada</td>
-                        <td>{{ contenedor.puerto_llegada_cod_pais }}</td>
-                    </tr>
-                    <tr>
-                        <td>Codigo Puerto Llegada</td>
-                        <td>{{ contenedor.puerto_llegada_cod }}</td>
-                    </tr>
-                </tbody>
-            </table>            
-        </div>
-        <div class="col-12">
-            <h4>Locacion Actual</h4>
-            <table class="table table-bordered table-hover table-striped" id="pin">
-                <thead>
-                    <tr>
-                        <th class="cabezera" style=" background-color: #0f9fd6; color: #ffffff; ">LON</th>
-                        <th class="cabezera" style=" background-color: #0f9fd6; color: #ffffff; ">LAT</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ contenedor.buque_lng }}</td>
-                        <td>{{ contenedor.buque_lat }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="d-flex justify-content-center">
-                <button id="showMap" class="btn btn-primary" onclick="navigateToRoute()">SHOW MAP</button>
+        <div class="row">
+            <div class="col-12">
+                <h4>Metadata</h4>
+                <table class="table table-bordered table-hover table-striped w-100" id="metadata">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>Numero Contenedor</td>
+                        <td>{{ contenedor.codigo }}</td>
+                        </tr>
+                        <tr>
+                            <td>Numero Factura</td>
+                            <td>{{ contenedor.factura.DocNum }}</td>
+                        </tr>
+                        <tr>
+                        <td>Nombre Naviera</td>
+                        <td>{{ contenedor.naviera_nom }}</td>
+                        </tr>
+                        <tr>
+                        <td>Estado</td>
+                        <td>{{ contenedor.estado }}</td>
+                        </tr>
+                        <tr>
+                        <td>Fecha Actualización</td>
+                        <td>{{ contenedor.ultima_actualizacion_tracking }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12">
+                <h4>Ultimo Evento</h4>
+                <table class="table table-bordered table-hover table-striped" id="eventos">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Descripcion</td>
+                            <td>{{ contenedor.ultimo_evento_desc }}</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha</td>
+                            <td>{{ contenedor.ultimo_evento_fecha }}</td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+            <div class="col-12">
+                <h4>Puertos</h4>
+                <table class="table table-bordered table-hover table-striped" id="puertos">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Puerto Descarga ETA</td>
+                            <td>{{ contenedor.puerto_descarga_eta }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre Puerto Descarga</td>
+                            <td>{{ contenedor.puerto_descarga_nom }}</td>
+                        </tr>
+                        <tr>
+                            <td>Codigo País Puerto Descarga</td>
+                            <td>{{ contenedor.puerto_descarga_cod_pais }}</td>
+                        </tr>
+                        <tr>
+                            <td>Codigo Puerto Descarga</td>
+                            <td>{{ contenedor.puerto_descarga_cod }}</td>
+                        </tr>
+                        <tr>
+                            <td>Puerto Salida ATD</td>
+                            <td>{{ contenedor.puerto_salida_atd }}</td>
+                        </tr>
+                        <tr>
+                            <td>Codigo País Puerto Salida</td>
+                            <td>{{ contenedor.puerto_salida_cod_pais }}</td>
+                        </tr>
+                        <tr>
+                            <td>Codigo Puerto Salida</td>
+                            <td>{{ contenedor.puerto_salida_cod }}</td>
+                        </tr>
+                        <tr>
+                            <td>Puerto Llegada ETA</td>
+                            <td>{{ contenedor.puerto_llegada_eta }}</td>
+                        </tr>
+                        <tr>
+                            <td>Codigo País Puerto Llegada</td>
+                            <td>{{ contenedor.puerto_llegada_cod_pais }}</td>
+                        </tr>
+                        <tr>
+                            <td>Codigo Puerto Llegada</td>
+                            <td>{{ contenedor.puerto_llegada_cod }}</td>
+                        </tr>
+                    </tbody>
+                </table>            
+            </div>
+            <div class="col-12">
+                <h4>Locacion Actual</h4>
+                <table class="table table-bordered table-hover table-striped" id="pin">
+                    <thead>
+                        <tr>
+                            <th class="cabezera" style=" background-color: #0f9fd6; color: #ffffff; ">LON</th>
+                            <th class="cabezera" style=" background-color: #0f9fd6; color: #ffffff; ">LAT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ contenedor.buque_lng }}</td>
+                            <td>{{ contenedor.buque_lat }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
         </div>
+        {% endif %}
+        <!--
+        <div class="table-responsive">
+            <h4>Contenedores</h4>
+            <table class="table table-bordered table-hover table-striped" id="containers">
+                <thead>
+                    <tr>
+                        <th>ORDER_ID</th>
+                        <th>NUMBER</th>
+                        <th>STATUS</th>
+                        <th>LOCATION</th>
+                        <th>FACILITY</th>
+                        <th>DESCRIPTION</th>
+                        <th>EVENT TYPE</th>
+                        <th>EVENT CODE</th>
+                        <th>STATUS</th>
+                        <th>DATE</th>
+                        <th>ACTUAL</th>
+                        <th>TYPE</th>
+                        <th>VESSEL</th>
+                        <th>VOYAGE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>{{ contenedor.codigo }}</td>
+                        <td>{{ contenedor.estado }}</td>
+                        <td>{{ contenedor.codigo }}</td>
+                        <td>{{ contenedor.codigo }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        -->
     </div>
-    <!--
-    <div class="table-responsive">
-        <h4>Contenedores</h4>
-        <table class="table table-bordered table-hover table-striped" id="containers">
-            <thead>
-                <tr>
-                    <th>ORDER_ID</th>
-                    <th>NUMBER</th>
-                    <th>STATUS</th>
-                    <th>LOCATION</th>
-                    <th>FACILITY</th>
-                    <th>DESCRIPTION</th>
-                    <th>EVENT TYPE</th>
-                    <th>EVENT CODE</th>
-                    <th>STATUS</th>
-                    <th>DATE</th>
-                    <th>ACTUAL</th>
-                    <th>TYPE</th>
-                    <th>VESSEL</th>
-                    <th>VOYAGE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td>{{ contenedor.codigo }}</td>
-                    <td>{{ contenedor.estado }}</td>
-                    <td>{{ contenedor.codigo }}</td>
-                    <td>{{ contenedor.codigo }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    -->
-</div>
 {% endblock %}

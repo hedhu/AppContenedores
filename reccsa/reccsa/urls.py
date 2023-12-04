@@ -1,15 +1,16 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth.views import LoginView
 from contenedores import views
 import registration.urls
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.buscador, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include(registration.urls)),
-    path('buscador/', views.buscador, name='buscador'),
-    path('contenedor/<str:contenedor_codigo>/', views.contenedor, name='contenedor'),
+    path('contenedores/', include('contenedores.urls')),
 ]
 
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

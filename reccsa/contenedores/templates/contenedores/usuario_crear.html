@@ -1,0 +1,10 @@
+{% extends 'contenedores/base.html' %}
+{% block title %}Creación nueva cuenta{% endblock %}
+{% block content %}
+    <h2>Crear Usuario</h2>
+    <form method="post" action="{% url 'usuario_crear' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Crear Usuario</button>
+    </form>
+{% endblock %}

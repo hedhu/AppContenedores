@@ -1,0 +1,12 @@
+{% extends 'contenedores/base.html' %}
+{% block title %}Lista usuarios{% endblock %}
+{% block content %}
+    <h2>Lista usuarios</h2>
+    <a class="btn btn-success mx-3" id='logOut' href="{% url "usuario_crear" %}">Crear Usuario</a>
+    {% for usuario in usuarios %}
+    <h1>{{usuario.id}}</h1>
+    <img src="{{usuario.imagen.url}}" class="img-fluid" style="width: 100px">
+    <h2>{{usuario.username}}</h2>
+    <a class="btn btn-danger mx-3" id='logOut' href="{% url "usuario_eliminar" usuario.id %}">Eliminar Usuario</a>
+    {% endfor %}
+{% endblock %}

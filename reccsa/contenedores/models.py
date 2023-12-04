@@ -60,3 +60,6 @@ class Factura(models.Model):
 
     def __str__(self):
         return f'{self.DocNum} | {self.CardName} '
+
+class Usuario(AbstractUser):
+    imagen = models.ImageField(default='imagen_perfil_default.jpg', upload_to='usuarios/')
