@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.http.response import JsonResponse
 from .models import FacturaSAP, Factura, Contenedor, Usuario
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -120,4 +121,14 @@ def temporal(request):
     context = { 'contenedores' : Contenedor.objects.all() }
 
     return render(request, 'contenedores/buscador.html', context)
+    
+# def contenedor(request, contenedor_codigo):
+    # contenedor = get_object_or_404(Contenedor, codigo = contenedor_codigo)
+    # return render(request, 'contenedores/contenedor.html', { 'contenedor': contenedor })
+
+def list_contenedores(_request):
+    contenedores = list(Contenedor.objects.values())
+    facturas = list(Factura.objects.values())
+    data = {'contenedores': contenedores, 'facturas': facturas}
+    return JsonResponse(data)
     
