@@ -32,16 +32,26 @@ body {
 
 #metadata tbody td:first-child,
 #eventos tbody td:first-child, 
-#puertos tbody td:first-child {
+#puertos tbody td:first-child,
+#mostrarMapaBtn {
     background-color: #0f9fd6;
     color: #ffffff;
     font-weight: bold;
 }
 
-.table-hover tbody tr:hover {
+#mostrarMapaBtn {
+    box-shadow: 10px 10px 21px -6px rgba(0,0,0, 0.2);
+}
+
+.table-hover tbody tr:hover,
+#mostrarMapaBtn:hover {
     background-color: #108dbe;
 }
 
+#mostrarMapaBtn:disabled {
+    background-color: #3ba1c9;
+    color: #5c5c5c;
+}
 /* table td, table th {
     padding: 0px;
     height: 5px;
@@ -55,20 +65,6 @@ body {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-}
-
-#logOut, #btnLogin {
-    background-color: #108dbe;
-    color: #ffffff;
-    border-radius: 20px;
-    padding: 10px 30px;
-    font-size: 14px;
-    border: none;
-    box-shadow: 10px 10px 21px -6px rgba(0,0,0, 0.2);
-}
-
-#logOut:hover, #btnLogin:hover {
-    background-color: #3ba1c9;
 }
 
 #showMap {

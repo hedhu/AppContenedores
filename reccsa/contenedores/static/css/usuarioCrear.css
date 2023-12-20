@@ -1,0 +1,13 @@
+#crearUsuario {
+    background-color: #108dbe;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 14px;
+    border: none;
+    box-shadow: 10px 10px 21px -6px rgba(0,0,0, 0.2);
+}
+
+#crearUsuario:hover {
+    background-color: #3ba1c9;
+}

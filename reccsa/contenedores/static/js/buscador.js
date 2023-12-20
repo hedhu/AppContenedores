@@ -8,7 +8,13 @@ const initDataTable = async() => {
 
     await listContenedores();
 
-    dataTable = new DataTable('#datatable_contenedores', {});
+    dataTable = new DataTable('#datatable_contenedores', {
+        searching: true, 
+        columnDefs: [
+            { targets: [0, 2, 3, 4], searchable: false }, 
+        ]
+    });
+
     dataTableIsInitialized=true;
 }
 
@@ -19,17 +25,19 @@ const listContenedores = async () => {
 
         let content = '';
         data.contenedores.forEach((contenedor, index) => {
-            const facturaCorrespondiente = data.facturas.find(factura => factura.U_CONTAINER === contenedor.codigo);
-
             content +=`
                 <tr>
                     <td class='text-center'>${contenedor.codigo}</td>
-                    <td class='text-center'>${facturaCorrespondiente ? facturaCorrespondiente.DocNum : '-'}</td>
+                    <td class='text-center'>${contenedor.doc_num || '-'}</td>
                     <td class='text-center'>${contenedor.estado}</td>
                     <td class='text-center'>${contenedor.ultima_actualizacion_tracking}</td>
-                    <td class='text-center'>${contenedor.ultima_actualizacion_tracking}</td>
+                    <td class='text-center'>
+                        <a href="${contenedor.url_contenedor}" class="detalles">
+                            <i class="bi bi-arrow-right-circle"></i>
+                        </a>
+                    </td>
                 </tr>
-            `
+            `;
         });
         tableBody_contenedores.innerHTML = content;
     } catch (ex) {

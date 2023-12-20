@@ -1,11 +1,27 @@
 {% extends 'contenedores/base.html' %}
-{% block title %}Lista usuarios{% endblock %}
+{% block title %}Eliminacion usuario{% endblock %}
+
+{% load static %}
+{% block custom %}
+    <link rel="stylesheet" href="{%static "css/usuarioEliminar.css" %}"> 
+{% endblock %} 
+
 {% block content %}
-    <h2>Confirmar eliminación</h2>
-    <p>¿Estás seguro de que deseas eliminar el usuario "{{ object }}"?</p>
-    <form method="post">
-        {% csrf_token %}
-        <input type="submit" value="Eliminar">
-        <a href="{% url 'usuario_lista' %}">Cancelar</a>
-    </form>
+    <div class="container p-4">
+        <div class="d-flex justify-content-center">
+            <div class="card rounded-4">
+                <div class="card-body">
+                    <h2 class='card-title'>Confirmar eliminación</h2>
+                    <p class='card-text'>¿Estás seguro de que deseas eliminar el usuario "{{ object }}"?</p>
+                    <form method="post">
+                    {% csrf_token %}
+                        <div class="d-flex justify-content-center">
+                            <input type="submit" value="Eliminar" class='btn btn-success me-2'>
+                            <a class='btn btn-danger' href="{% url 'usuario_lista' %}">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

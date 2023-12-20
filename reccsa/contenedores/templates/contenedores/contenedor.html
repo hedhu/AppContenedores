@@ -4,6 +4,8 @@
 
 {% block custom %}
     <link rel="stylesheet" href="{%static "css/contenedor.css" %}"> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHSNRoRzUgFELjOj6r_WyRf7vbG9wyhig&callback=initMap" async defer></script>
+    <script src="{% static "js/contenedor.js" %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -121,12 +123,16 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ contenedor.buque_lng }}</td>
-                            <td>{{ contenedor.buque_lat }}</td>
+                            <td id="longitud">{{ contenedor.buque_lng }}</td>
+                            <td id="latitud">{{ contenedor.buque_lat }}</td>
                         </tr>
                     </tbody>
                 </table>
-
+                <div class="d-flex justify-content-between">
+                    <button id="mostrarMapaBtn" class="btn btn-primary d-block"><i class="bi bi-geo-alt-fill"></i></button>
+                    <button id="cerrarMapaBtn" class="d-none btn btn-danger btn-cerrar-map d-block" onclick="cerrarMapa()"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div id="map" class='d-none w-100 mt-3' style="height: 500px;"></div>
             </div>
         </div>
         {% endif %}
@@ -165,4 +171,5 @@
         </div>
         -->
     </div>
+
 {% endblock %}

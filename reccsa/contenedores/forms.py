@@ -6,7 +6,7 @@ from .models import Usuario
 class CreacionUsuario(UserCreationForm):
     perfil = forms.ModelChoiceField(
         queryset=Group.objects.all(),
-        widget=forms.RadioSelect,
+        widget=forms.RadioSelect(),
         required=True,
         help_text="Selecciona un tipo de perfil"
     )
