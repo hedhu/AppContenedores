@@ -21,6 +21,15 @@ class ContenedoresListView(ListView):
     context_object_name = 'contenedores'
 
 @method_decorator(login_required, name='dispatch')
+class ContenedoresCerradosListView(ListView):
+    model = Contenedor
+    template_name = 'contenedores/buscador_cerrados.html'
+    context_object_name = 'contenedores'
+
+    def get_queryset(self):
+        return Contenedor.objects.filter(factura=Factura.objects.get(U_ESTADO_CONTENEDOR = "CERRADO"))
+
+@method_decorator(login_required, name='dispatch')
 class ContenedorDetailView(DetailView):
     model = Contenedor
     template_name = 'contenedores/contenedor.html'
@@ -124,29 +133,3 @@ def temporal(request):
     context = { 'contenedores' : Contenedor.objects.all() }
 
     return render(request, 'contenedores/buscador.html', context)
-    
-# def contenedor(request, contenedor_codigo):
-    # contenedor = get_object_or_404(Contenedor, codigo = contenedor_codigo)
-    # return render(request, 'contenedores/contenedor.html', { 'contenedor': contenedor })
-
-def list_contenedores(_request):
-    contenedores = list(Contenedor.objects.values())
-    facturas = list(Factura.objects.values())
-    
-    contenedores_data = []
-    for contenedor in contenedores:
-        factura_correspondiente = next((factura for factura in facturas if factura['U_CONTAINER'] == contenedor['codigo']), None)
-
-        contenedor_data = {
-            'codigo': contenedor['codigo'],
-            'doc_num': factura_correspondiente['DocNum'] if factura_correspondiente else '-',
-            'estado': contenedor['estado'],
-            'ultima_actualizacion_tracking': contenedor['ultima_actualizacion_tracking'],
-            'url_contenedor': reverse('contenedor', kwargs={'contenedor_codigo': contenedor['codigo']}),
-        }
-
-        contenedores_data.append(contenedor_data)
-
-    data = {'contenedores': contenedores_data}
-    return JsonResponse(data)
-    
