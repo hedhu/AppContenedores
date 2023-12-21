@@ -1,5 +1,16 @@
 {% extends 'contenedores/base.html' %}
 {% block title %}Inicio{% endblock %}
 {% block content %}
-    <h1> PÁGINA DE INICIO </h1>
+<div class="container pt-3 d-flex flex-column justify-content-start align-items-center">
+    <div class="welcome text-center m-4">
+        <h1 style=' color:#0f9fd6;'>Bienvenido a INUUS</h1>
+        <p>¡Gracias por visitar nuestra plataforma! Aquí encontrarás herramientas útiles para rastrear y vizualizar datos de contenedores de Condensa.</p>
+    
+        {% if user.is_authenticated %}
+          <p>¡Hola, {{ user.username }}!</p>
+        {% else %}
+          <p>¿Ya eres miembro? <a style='color: #0f9fd6;' href="{% url 'login' %}">Inicia sesión</a>.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

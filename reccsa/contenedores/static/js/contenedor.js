@@ -25,14 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var mostrarMapaBtn = document.getElementById('mostrarMapaBtn');
     var cerrarMapaBtn = document.getElementById('cerrarMapaBtn');
 
-    mostrarMapaBtn.addEventListener('click', function () {
-        initMap();
-        document.getElementById('map').classList.remove('d-none');
-        document.getElementById('map').classList.add('d-block');
-        mostrarMapaBtn.disabled = true;
-        cerrarMapaBtn.classList.remove('d-none');
-    });
-
     cerrarMapaBtn.addEventListener('click', function () {
         document.getElementById('map').classList.remove('d-block');
         document.getElementById('map').classList.add('d-none');
@@ -40,6 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
         cerrarMapaBtn.classList.add('d-none');
     });
 });
+
+function verMapa () {
+    initMap();
+    document.getElementById('map').classList.remove('d-none');
+    document.getElementById('map').classList.add('d-block');
+    mostrarMapaBtn.disabled = true;
+    cerrarMapaBtn.classList.remove('d-none');
+};
 
 function cerrarMapa() {
     var map = document.getElementById('map');
@@ -51,4 +51,8 @@ function cerrarMapa() {
 
     var cerrarMapaBtn = document.getElementById('cerrarMapaBtn');
     cerrarMapaBtn.classList.add('d-none');
+}
+
+function imprimirPantalla() {
+    window.print()
 }

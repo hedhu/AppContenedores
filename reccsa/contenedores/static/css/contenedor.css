@@ -3,7 +3,7 @@ body {
     font-size: 0.9em;
 }
 
-#volver {
+#volver, #documento {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,4 +77,30 @@ body {
 
 #showMap:hover {
     background-color: #108dbe;
+}
+
+@media print {
+
+    #navbar, #documento, #volver, #map, #mostrarMapaBtn {
+      display: none;
+    }
+
+    body {
+        border: none;
+    }
+
+    #pin thead th {
+        background-color: #0f9fd6;
+        color: #000000;
+        font-weight: bold; 
+    }
+
+    #metadata tbody td:first-child,
+    #eventos tbody td:first-child, 
+    #puertos tbody td:first-child {
+        background-color: #0f9fd6;
+        color: #000000;
+        font-weight: bold;
+    }
+
 }

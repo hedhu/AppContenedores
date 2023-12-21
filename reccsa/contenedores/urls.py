@@ -3,7 +3,7 @@ from contenedores import views
 from .views import *
 
 urlpatterns = [
-    path('inicio/', views.index, name='inicio'),
+    path('', views.index, name='inicio'),
     path('buscador/', ContenedoresListView.as_view(), name='buscador'),
     path('buscador/cerrados', ContenedoresCerradosListView.as_view(), name='buscadorCerrados'),
     path('contenedor/<str:contenedor_codigo>/', ContenedorDetailView.as_view(), name='contenedor'),

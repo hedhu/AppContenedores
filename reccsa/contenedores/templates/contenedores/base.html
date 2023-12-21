@@ -25,20 +25,29 @@
 </head>
 <body class="w-100">
     
-    <nav id='navbar' class="navbar">
+    <nav id='navbar' class="navbar navbar-expand-sm">
         <div class="container-fluid">
-          <a id='linkLogo' class="navbar-brand" href="#">
-            <img id="logo" src="{% static "img/logo.png" %}" alt="Logo" class="w-50 mx-2">
-          </a>
-          {% if request.user.is_authenticated %}
-            <a class="btn btn-primary mx-3 log" href="{% url "logout" %}">Cerrar Sesion</a>
-            <a class="btn btn-primary mx-3 log" href="{% url "buscador" %}">Ver Contenedores</a>
-            {% if user.groups.all.0.name == 'Administrador' %}
-              <a class="btn btn-primary mx-3 log" href="{% url "usuario_lista" %}">Ver Usuarios</a>
-            {% endif %}
-          {% else %}
-            <a class="btn btn-primary mx-3 log" href="{% url "login" %}">Iniciar Sesion</a>
-          {% endif %}
+          <div class="d-flex justify-content-between">
+            <a id='linkLogo' class="navbar-brand" href="{% url "inicio" %}">
+              <img id="logo" src="{% static "img/logo.png" %}" alt="Logo" class="w-50 mx-2">
+            </a>
+            <button id='btnCollapse' class="btn navbar-toggler d-sm-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav">
+             {% if request.user.is_authenticated %}
+             <a class="nav-link mx-3 log" href="{% url "logout" %}">Cerrar Sesion</a>
+             <a class="nav-link mx-3 log" href="{% url "buscador" %}">Ver Contenedores</a>
+             {% if user.groups.all.0.name == 'Administrador' %}
+               <a class="nav-link mx-3 log" href="{% url "usuario_lista" %}">Ver Usuarios</a>
+             {% endif %}
+             {% else %}
+               <a class="btn btn-primary mx-3 log" href="{% url "login" %}">Iniciar Sesion</a>
+             {% endif %}
+            </div>
+          </div>
         </div>
     </nav>
 
