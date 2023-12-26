@@ -1,6 +1,6 @@
 {% extends "contenedores/base.html" %} 
 {% load static %} 
-{% block title%}Buscador{% endblock %}
+{% block title%}Buscador contenedores antiguos{% endblock %}
 
 {% block custom %}
     <link rel="stylesheet" href="{%static "css/buscador.css" %}"> 
@@ -8,18 +8,8 @@
 {% endblock %} 
 
 {% block content %}
-<div id="buscador">
-  <div class="contenedor table-responsive p-3">
-    <!--<div class="table_header">
-      <h2>Contenedores</h2>
-      <select name="" id="estado">
-        <option value="" selected>Estado</option>
-      </select>
-      <div class="input-search">
-        <input type="text" placeholder="Buscar" />
-        <i class="bi bi-search" id="search"></i>
-      </div>
-    </div>-->
+<div class="container" id="buscador">
+  <div class="contenedor table-responsive p-3 my-3 col-12">
     <table id="datatable_contenedores" class="table table-striped">
       <thead>
         <tr class="bg-info">
@@ -32,7 +22,6 @@
           {% endif %}
         </tr>
       </thead>
-      <h1>Log</h1>
       <tbody id="tableBody_contenedores">
         {% for contenedor in contenedores %}
         <tr>

@@ -2,3 +2,7 @@
     box-shadow: 10px 10px 21px -6px rgba(0,0,0, 0.2);
     width: 27rem;
 }
+
+.container {
+    min-height: 90vh;
+}

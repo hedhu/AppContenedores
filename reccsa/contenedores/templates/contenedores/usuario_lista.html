@@ -1,31 +1,44 @@
 {% extends 'contenedores/base.html' %}
 {% block title %}Lista usuarios{% endblock %}
+{% load static%}
+{% block custom %}
+    <link rel="stylesheet" href="{%static "css/usuarios.css" %}"> 
+    <script src="{% static "js/usuarios.js" %}"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"></script>
+{% endblock %} 
 {% block content %}
-<div class="container">
-    <div class="d-flex justify-content-between my-4">
-        <h2 class="h2">Lista de Usuarios</h2>
-        <a class="btn btn-success h-100" href="{% url 'usuario_crear' %}">Crear Usuario</a>
-    </div>
-    <div class="row">
-    {% for usuario in usuarios %}
-        <div class="col-10 col-sm-6 col-md-4">
-            <div class="d-flex justify-content-center"></div>
-            <div class="card mb-3 rounded-4" style="box-shadow: 10px 10px 21px -6px rgba(0,0,0, 0.2);">
-                <div class="row g-0">
-                    <div class="col-12">
-                        <img src="{{ usuario.imagen.url }}" class="img-fluid rounded-start rounded-top-4" alt="{{ usuario.username }}">
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ usuario.username }}</h5>
-                        <p class="card-text">ID: {{ usuario.id }}</p>
-                        <a class="btn btn-danger" href="{% url 'usuario_eliminar' usuario.id %}">Eliminar Usuario</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
+<div class="container" id="buscador">
+  <div class="contenedor table-responsive p-3 my-3 col-12">
+    <a id="boton_nuevo" href="{% url 'usuario_crear' %}" class="mb-3"><i class="bi bi-plus-circle me-2"></i>Nuevo usuario</a>
+    <table id="datatable_usuarios" class="table table-striped">
+        <thead>
+          <tr class="bg-info">
+            <th class='text-center'>Perfil</th>
+            <th class='text-center'>Nombre</th>
+            <th class='text-center'>Usuario</th>
+            <th class='text-center'>Último inicio de sesión</th>
+            <th class='text-center'>Rol</th>
+            {% if request.user.is_authenticated %}
+              <th class='text-center'>Eliminar</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody id="tableBody_contenedores">
+          {% for usuario in usuarios %}
+          {% if usuario.id != 1 and usuario.id != request.user.id %}
+          <tr>
+            <td class='text-center'><img src="{{ usuario.imagen.url }}" alt="{{ usuario.username }}" width="25" height="25"></td>
+            <td class='text-center'> {{usuario.first_name}} {{usuario.last_name}} </td>
+            <td class='text-center'>{{usuario.username}}</td>
+            <td class='text-center'>{{usuario.last_login}}</td>
+            <td class='text-center'>{{usuario.groups.first}}</td>
+            <td class='text-center'><a href="{% url 'usuario_eliminar' usuario.id %}"><i class="bi bi-x-circle"></a></i></i></td>
+          </tr>
+          {% endif %}
+        {% endfor %} 
+        </tbody>
+    </table>
+  </div>
     </div>
 </div>
 {% endblock %}

@@ -3,6 +3,7 @@ from django.db import models
 
 class Contenedor(models.Model):
     codigo = models.CharField(max_length=30, primary_key=True)
+    pol = models.DateTimeField(null = True)
     naviera_nom = models.CharField(max_length=45, null=True)
     estado = models.CharField(max_length=30, null=True)
     ultimo_evento_desc = models.CharField(max_length=150, null=True)

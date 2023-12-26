@@ -1,7 +1,4 @@
-body {
-    font-family: 'Arial', sans-serif;
-    font-size: 0.9em;
-}
+
 
 #volver, #documento {
     display: flex;
@@ -13,22 +10,6 @@ body {
     background-color: #e2e7ef;
     box-shadow: 10px 10px 21px -6px rgba(0,0,0, 0.2);
 }
-
-
-.container {
-    max-width: 1600px;
-    margin: 10 auto; 
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 21px -6px rgba(0,0,0, 0.2);
-}
-
-/* table {
-    border-collapse: separate;
-    border-spacing: 0;
-    min-width: 0;
-} */
 
 #metadata tbody td:first-child,
 #eventos tbody td:first-child, 

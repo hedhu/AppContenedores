@@ -10,19 +10,21 @@
 body {
     width: 100%;
     height: 100vh;
-    display: flex;
     background-color: #dee2e6;
 }
 
-#logo {
-    width: 100%
-}
-
 #login {
-    width: 100%;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards; 
     height: 100%;
     display: flex;
     align-items: center;
+
+}
+
+#login .submitButton {
+    background-color: #00ff00; /* Cambia el color de fondo a verde (#00ff00), puedes ajustar el valor según tus preferencias */
+    color: #ffffff; /* Cambia el color del texto a blanco (#ffffff) para contrastar con el fondo */
 }
 
 #login #formLogin {
@@ -38,6 +40,7 @@ body {
 #login #formLogin h1 {
     margin-bottom: 30px;
     text-align: center;
+    color: #0F9FD6;
 }
 
 #login #formLogin .inputContainer {
@@ -78,7 +81,7 @@ body {
     padding: 10px 30px;
     outline: none;
     border: none;
-    background-color: #252629;
+    background-color: #0F9FD6;
     color: #f8f9fa;
     font-size: 16px;
     border-radius: 15px;
@@ -108,3 +111,8 @@ body {
     border: 1px solid #252629;
 }
 
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

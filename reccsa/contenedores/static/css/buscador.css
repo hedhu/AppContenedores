@@ -4,19 +4,22 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #EEF4FD;
+}
+
 #buscador {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 86vh;
-    background-color: #eef4fd;
+    min-height: 90vh;
+
 }
 
 .contenedor {
     display: flex;
     flex-direction: column;
     box-shadow: 8px 8px 5px 0px #bdbdbdbf;
-    width: 90%;
     background-color: #ffffff;
     border-radius: 30px;
 }

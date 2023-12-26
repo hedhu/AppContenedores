@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_celery_beat',
-    'django_celery_results',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    # 'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -146,12 +148,12 @@ AUTH_USER_MODEL = 'contenedores.Usuario'
 
 # REDIS configuration
 
-# CELERY_BROKER_URL = "redis://localhost:6379"
-# CELERY_RESULT_BACKEND = "redis://localhost:6379"
-# CELERY_ACCEPT_CONTENT = ["json"]
-# CELERY_TASK_SERIALIZER = "json"
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
 
-# # REDIS CACHE
+# REDIS CACHE
 
 # CELERY_CACHE_BACKEND = 'default'
 
@@ -162,7 +164,11 @@ AUTH_USER_MODEL = 'contenedores.Usuario'
 #     }
 # }
 
-# # CELERY BEAT
+# CELERY BEAT
 
-# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
+#CRISPY TEMPLATES
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

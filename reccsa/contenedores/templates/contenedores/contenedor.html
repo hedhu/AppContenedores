@@ -12,9 +12,9 @@
 
 {% block content %}
 {% if user.groups.all.0.name == 'Empleado' or user.groups.all.0.name == 'Administrador' %}
-    <div class="container mt-2">
+    <div class="container my-3">
         
-        <div class="container my-2 d-flex justify-content-between">
+        <div class="my-2 d-flex justify-content-between">
             <h2>Container Data</h2>
             <div class="d-flex justify-content-center">
                 <button onClick='imprimirPantalla()' class='btn me-2' id="documento"><i class="bi bi-file-earmark-text"></i></button>

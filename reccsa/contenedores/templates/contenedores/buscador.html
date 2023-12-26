@@ -5,43 +5,33 @@
 {% block custom %}
     <link rel="stylesheet" href="{%static "css/buscador.css" %}"> 
     <script src="{% static "js/buscador.js" %}"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"></script>
 {% endblock %} 
 
 {% block content %}
-<div id="buscador">
-  <div class="contenedor table-responsive p-3">
-    <!--<div class="table_header">
-      <h2>Contenedores</h2>
-      <select name="" id="estado">
-        <option value="" selected>Estado</option>
-      </select>
-      <div class="input-search">
-        <input type="text" placeholder="Buscar" />
-        <i class="bi bi-search" id="search"></i>
-      </div>
-    </div>-->
-    <table id="datatable_contenedores" class="table table-striped">
+<div class="container" id="buscador">
+  <div class="contenedor table-responsive p-3 my-3 col-12">
+    <table id="datatable_contenedores" class="table table-striped ">
       <thead>
         <tr class="bg-info">
           <th class='text-center'>Número Contenedor</th>
           <th class='text-center'>Número Factura</th>
           <th class='text-center'>Estado</th>
-          <th class='text-center'>Ultima Actualización</th>
+          <th class='text-center'>Fecha de salida</th>
+          <th class='text-center'>ETA</th>
           {% if request.user.is_authenticated %}
             <th class='text-center'>Ver Detalles</th>
           {% endif %}
         </tr>
       </thead>
       <tbody id="tableBody_contenedores">
-
-
-          
         {% for contenedor in contenedores %}
         <tr>
           <td class='text-center'>{{ contenedor.codigo }}</td>
           <td class='text-center'>{{ contenedor.factura.DocNum }}</td>
           <td class='text-center'>{{ contenedor.estado }}</td>
-          <td class='text-center'>{{ contenedor.ultima_actualizacion_tracking }}</td>
+          <td class='text-center'>{{ contenedor.pol }}</td>
+          <td class='text-center'>{{ contenedor.puerto_descarga_eta }}</td>
             {% if request.user.is_authenticated %}
               <td class='text-center'><a href="{% url 'contenedor' contenedor.codigo %}" class="detalles"><i class="bi bi-arrow-right-circle"></i></a></td>
             {% endif %}
