@@ -112,3 +112,59 @@ body {
     }
 }
 
+#documento {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #0f9fd6;
+    background-color: #e2e7ef;
+    box-shadow: 10px 10px 21px -6px rgba(0,0,0, 0.2);
+}
+
+@media print {
+
+    #navbar, #documento{
+      display: none;
+    }
+
+    body {
+        border: none;
+    }
+
+    #pin thead th {
+        background-color: #0f9fd6;
+        color: #000000;
+        font-weight: bold; 
+    }
+
+    #datatable_contenedores_wrapper {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    #buscador {
+        margin: 0;
+    }
+
+    #thdetalles, .tddetalles {
+        display: none;
+    }
+
+    #datatable_contenedores_length, #datatable_contenedores_filter, #datatable_contenedores_info, #datatable_contenedores_paginate, #datatable_contenedores_info {
+        display: none;
+    }
+
+
+    #metadata tbody td:first-child,
+    #eventos tbody td:first-child, 
+    #puertos tbody td:first-child {
+        background-color: #0f9fd6;
+        color: #000000;
+        font-weight: bold;
+    }
+
+}

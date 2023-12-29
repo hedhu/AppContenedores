@@ -1,6 +1,7 @@
 from celery import shared_task
 from .models import FacturaSAP, Factura, Contenedor
 import json, requests
+from decouple import config
 
 @shared_task
 def actualizarBaseDeDatos():
@@ -27,7 +28,7 @@ def actualizarBaseDeDatos():
         print(f"Se produjo un error: {e}")
 
     params = {
-        "api_key": "12CF-YIB3-5E7U-TQMN-D0S6",
+        "api_key": config('API_KEY'),
         "number": None, 
         "sealine": "auto",
         "type": "CT",

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -90,11 +91,11 @@ DATABASES = {
     },
     'bd_sap': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'TST13_CONDENSA',
-        'USER': 'SA',
-        'PASSWORD': 'Sa123456',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': config('DB2_NAME'),
+        'USER': config('DB2_USER'),
+        'PASSWORD': config('DB2_PASSWORD'),
+        'HOST': config('DB2_HOST'),
+        'PORT': config('DB2_PORT'),
     }
 }
 

@@ -15,6 +15,7 @@
         <tr class="bg-info">
           <th class='text-center'>Número Contenedor</th>
           <th class='text-center'>Número Factura</th>
+          <th class='text-center'>Cliente</th>
           <th class='text-center'>Estado</th>
           <th class='text-center'>Ultima Actualización</th>
           {% if request.user.is_authenticated %}
@@ -27,6 +28,7 @@
         <tr>
           <td class='text-center'>{{ contenedor.codigo }}</td>
           <td class='text-center'>{{ contenedor.factura.DocNum }}</td>
+          <td class='text-center'>{{ contenedor.factura.CardName }}</td>
           <td class='text-center'>{{ contenedor.estado }}</td>
           <td class='text-center'>{{ contenedor.ultima_actualizacion_tracking }}</td>
             {% if request.user.is_authenticated %}

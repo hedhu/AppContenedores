@@ -12,7 +12,7 @@ const initDataTable = async() => {
         },
         searching: true, 
         columnDefs: [
-            { targets: [2, 3, 4], searchable: false }, 
+            { targets: [3, 4, 5], searchable: false }, 
         ]
     });
 
@@ -21,3 +21,7 @@ const initDataTable = async() => {
 window.addEventListener('load', async () => {
     await initDataTable();
 })
+
+function imprimirPantalla() {
+    window.print()
+}
